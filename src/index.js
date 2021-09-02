@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { Values } from "redux-form-website-template";
+import store from "./store";
+import SimpleForm from "./SimpleForm";
+import showResults from "./showResults";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const rootEL = document.getElementById("root");
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store = {store}>
+    <div style= {{padding: 15}}>
+      <h2>Simple Form</h2>
+      <SimpleForm onSubmit={showResults} />
+          </div>
+  </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
